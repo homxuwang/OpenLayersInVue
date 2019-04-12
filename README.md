@@ -1,12 +1,11 @@
 本仓库记录学习在Vue中使用OpenLayers的过程
 
-
-
-用到的组件:
+用到的主要组件:
 ```
 "element-ui": "^2.4.4",
 "ol": "^5.3.1"
 ```
+
 # vueopenlayers
 
 > use Vue.js & OpenLayers.
@@ -14,7 +13,7 @@
 # 项目结构
 
 本项目没有构建单元测试部分和ESLint功能(因为我太菜了ORZ,省点事吧OAO)
-
+```
 ├── README.md
 ├── index.html                   入口页面
 ├── build                        构建脚本目录
@@ -36,7 +35,12 @@
 │  ├── main.js                   入口js文件
 │  ├── App.vue                   根组件
 │  ├── components                公共组件目录
-│  │  ├── globa                  全局组件目录
+│  │  ├── home                   主页组件目录
+│  │  │  ├── components          子目录
+│  │  │  │   ├── leftBottom.vue
+│  │  │  │   └── leftTop.vue
+│  │  │  └── home.vue
+│  │  ├── map                    地图组件目录
 │  │  │  └── map-component.vue   地图组件
 │  │  ├── login                  登陆目录
 │  │  │  └── login.vue           登陆组件
@@ -50,16 +54,19 @@
 │  │  │  └── imagePath.js        获取图片路径
 │  ├── assets                    资源目录，这里的资源会被wabpack构建
 │  │  └── images
-│  │    ├── logo.png
-│  │    ├── logo_1.png
-│  │    ├── bg.png
-│  │    └── ....
+│  │  │  ├── logo.png
+│  │  │  ├── logo_1.png
+│  │  │  ├── bg.png
+│  │  │  └── ....
 │  ├── config                   地图配置目录
 │  │  └── mapconfig.js          地图配置文件
 │  └── routes                   前端路由
 │  │  └── index.js
-└── static                      纯静态资源，不会被wabpack构建。
-
+├── static                      纯静态资源，不会被wabpack构建。
+│  │  ├── json                  json配置文件
+│  │  │  └── options.json       地图操作选项配置
+│  │  └── config.js             用户、服务器配置文件
+```
 
 ## Build Setup
 

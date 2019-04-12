@@ -2,18 +2,23 @@
   <div id="app_bottom">
     <div class="info">
       <span>@Copyright <a href="https://homxuwang.github.io/">homxuwang</a></span>
-      <span>2019/04/10 --  </span>
+      <span>2019/04/10 -- {{ theDateTime }} </span>
     </div>
   </div>
 </template>
 
 <script>
+import { dateFormater } from '@/components/utils/dateUtil'
 export default {
   name: 'appBottom',
   data() {
-    return{}
+    return{
+     theDateTime: ''
+    }
   },
-  created() {},
+  created() {
+    this.theDateTime = dateFormater(new Date(), 'yyyy-MM')
+  },
   methods: {}
 }
 </script>
@@ -22,8 +27,10 @@ export default {
 #app_bottom {
   width: 100%;
   height: 40px;
+  bottom: 0px;
   position: relative;
   text-align: center;
+  background-color: rgba(20, 36, 68, 0.9);color: rgb(239, 239, 239);
   .info {
     margin: 0 auto;
     font-size: 12px;

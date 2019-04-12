@@ -25,8 +25,8 @@ export default {
       layers: mapconfig.streetmap(0),      
       view: new View({
         projection: "EPSG:4326",
-        zoom: mapconfig.zoom,
-        center: [mapconfig.x, mapconfig.y]
+        zoom: mapconfig.view.zoom,
+        center: [mapconfig.view.x, mapconfig.view.y]
       })
     });
   }
@@ -35,7 +35,7 @@ export default {
 
 <style>
  #map{
-  height: 80%;
+  height: 100%;
   }
 
 </style>    

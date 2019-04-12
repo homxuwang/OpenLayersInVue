@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import VMap from './components/globa/map-component.vue';
+import VMap from './components/map/map-component.vue';
 export default {
   name: 'App',
   components: {

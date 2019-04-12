@@ -2,7 +2,7 @@
   <div id="app_header">
     <!-- 时间部分 -->
     <div class="time-widget">
-      <div class="dataTime">{{ theDateTime }}</div>
+      <div class="dateTime">{{ theDateTime }}</div>
       <div class="week">{{ week }}</div>
     </div>
 
@@ -73,7 +73,7 @@ export default {
     this.timer = setInterval(() => {
       that.theDateTime = dateFormater(new Date(), 'yyyy-MM-dd hh:mm:ss')
     },1000)
-    this.week = '星期' + '日一二三四五六'.charAt(new Date().getDay()) 
+    this.week = '星期' + '日一二三四五六'.charAt(new Date().getDay())
   },
   methods: {
     /**
@@ -133,7 +133,7 @@ export default {
 
 <style lang="less" scoped>
 #app_header {
-  box-shadow:#eee 3px 0 0, #eee 0 2px 0, #eee -2px 0 0, #eee 0 -2px 0; 
+  box-shadow:0px 0px 5px 2px #00eeee;
   width: 100%;
   height: 40px;
   position: relative;

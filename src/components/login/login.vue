@@ -61,7 +61,7 @@
       </div>
       
     </div>
-    <app-bottom style="background-color: rgba(20, 36, 68, 0.9);color: rgb(239, 239, 239);"></app-bottom>
+    <app-bottom></app-bottom>
   </div>
   
 </template>
