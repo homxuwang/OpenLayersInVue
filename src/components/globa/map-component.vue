@@ -34,6 +34,8 @@ export default {
 </script>
 
 <style>
-#map{height:100%;}
+ #map{
+  height: 80%;
+  }
 
 </style>    

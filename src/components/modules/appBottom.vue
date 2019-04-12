@@ -1,7 +1,7 @@
 <template>
   <div id="app_bottom">
     <div class="info">
-      <span>By homxuwang</span>
+      <span>@Copyright <a href="https://homxuwang.github.io/">homxuwang</a></span>
       <span>2019/04/10 --  </span>
     </div>
   </div>

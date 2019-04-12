@@ -7,17 +7,17 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/map'
+      redirect: '/login'
     },
     {
-      path: '/map',
-      name: 'map',
+      path: '/home',
+      name: 'home',
       meta: {
         index: 0,
         keepAlive: true,
-        title: '地图'
+        title: '主窗口'
       },
-      component: resolve => require(['@/components/globa/map-component'], resolve)
+      component: resolve => require(['@/components/home/home'], resolve)
     },
     {
       path: '/login',

@@ -16,7 +16,7 @@
           </div>
         </transition>
         <div class="login-logo">
-          <img src="../../assets/images/logo_1.png">
+          <img :src="this.$loadImages.loadImages('logo_1.png')">
           <div>OpenLayersInVue</div>
         </div>
       </div>
@@ -36,7 +36,7 @@
           </div>
         </transition>
       <div class="login-logo">
-        <img src="../../assets/images/logo_1.png">
+        <img :src="this.$loadImages.loadImages('logo_1.png')">
         <div>OpenLayersInVue</div>
       </div>
     </div>
@@ -55,7 +55,7 @@
           </div>
         </transition>
         <div class="login-logo">
-          <img src="../../assets/images/logo.png">
+          <img :src="this.$loadImages.loadImages('logo_1.png')">
           <div>OpenLayersInVue</div>
         </div>
       </div>
@@ -96,6 +96,7 @@ export default {
     }
   },
   created() {
+    console.log(this.$loadImages.loadImages('logo_1.png'));
     console.log('userAccountList-->>',LS.getLS('userAccountList'))
     //如果不存在用户列表
     if(!LS.getLS('userAccountList')) {
@@ -145,7 +146,7 @@ export default {
           type: 'success'
         })
         LS.setLS('userInfo',userInfo) //吧登陆成功的用户信息存起来
-        this.$router.push(this.$route.query.redirect || '/map')  //跳转到'/map'页面
+        this.$router.push(this.$route.query.redirect || '/home')  //跳转到'/map'页面
       }else {
         this.$message.error('账号或密码不正确！')
       }

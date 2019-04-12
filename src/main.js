@@ -6,11 +6,17 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css'
+import loadImages from './components/utils/imagePath.js'
 // import 'animate.css/animate.min.css';
 
 Vue.config.productionTip = false
 
 Vue.use(ElementUI);
+
+//注册全局组件
+Vue.prototype.$loadImages = loadImages //获取图片
+
+//注册全局组件
 
 /* eslint-disable no-new */
 new Vue({
