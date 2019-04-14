@@ -6,7 +6,8 @@
 
    <div class="panel" ref="panel">
      <el-tree style="padding: 0 0 5px 5px;background-color: rgba(20,36,68,0)!important;"
-              :data="options">
+              :data="options"
+              @node-click="toRouter">
 
      </el-tree>
    </div>
@@ -31,9 +32,11 @@
 
    },
    methods: {
-     /**
-      * 将json
-      */
+     toRouter(data) {
+       if(!data.children){
+         this.$router.push({path:'/home/'+data.path})
+       }       
+     }
    }
  }
 </script>

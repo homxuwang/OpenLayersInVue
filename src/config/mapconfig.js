@@ -75,7 +75,7 @@ var leftTopBaseLayers = [
         "url": 0
     },
     {
-        "name": 'Arcgis在线午夜蓝地图',
+        "name": 'Arcgis在线午夜蓝底图',
         "url": 1
     }
 ]

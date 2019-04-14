@@ -7,6 +7,7 @@ import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css'
 import loadImages from './components/utils/imagePath.js'
+import store from './store'
 
 // import 'animate.css/animate.min.css';
 
@@ -23,6 +24,7 @@ Vue.prototype.$loadImages = loadImages //获取图片
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

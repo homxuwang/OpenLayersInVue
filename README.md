@@ -36,7 +36,15 @@
 │  ├── App.vue                   根组件
 │  ├── components                公共组件目录
 │  │  ├── home                   主页组件目录
-│  │  │  ├── components          子目录
+│  │  │  ├── components
+│  │  │  │   ├── components
+│  │  │  │   │  ├── check
+│  │  │  │   │  │  ├── clickCheck.vue
+│  │  │  │   │  │  └── valueCheck.vue
+│  │  │  │   │  └── draw  
+│  │  │  │   │     ├── coordinateDraw.vue
+│  │  │  │   │     ├── freeDraw.vue
+│  │  │  │   │     └── standardDraw.vue
 │  │  │  │   ├── leftBottom.vue
 │  │  │  │   └── leftTop.vue
 │  │  │  └── home.vue

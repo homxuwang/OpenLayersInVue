@@ -1,11 +1,16 @@
 <template>
  <div>
    <div class="tab">
-     <span class="active">图层管理</span>
-     <span class="active">操作</span>
+     <span @click="changeTabIndex(0)" :class="{active:tabIndex==0}">
+       图层管理
+     </span>
+     <span @click="changeTabIndex(1)" :class="{active:tabIndex==1}">
+       操作
+     </span>
    </div>
 
-   <div class="panel" ref="panel">
+    <!-- 图层视图 -->
+   <div class="panel" ref="layers_panel" v-show="tabIndex==0">
      <!-- 图层树组件 -->
      <el-tree style="padding: 0 0 5px 5px;background-color: rgba(20,36,68,0)!important;"
               :data="dataTree"
@@ -22,18 +27,28 @@
         :min="0"
         :max="1">
         <el-radio  style="padding:0 0 5px 5px;background-color: rgba(20,36,68,0)!important;"
-            v-for="baseMap in dataBaseMapCheckList" :label="baseMap.name" :key="baseMap.name">
+                   v-for="baseMap in dataBaseMapCheckList" 
+                   :label="baseMap.url" 
+                   :key="baseMap.url"
+                   @change="changeBaseLayer(baseMap.url)">
           {{ baseMap.name }}
         </el-radio>
      </el-radio-group>
-
    </div>
 
+   <!-- 操作视图 -->
+   <div class="panel" ref="options_panel" v-show="tabIndex==1">
+     <keep-alive>
+      <router-view />
+     </keep-alive>
+     
+   </div>
  </div>
 </template>
 
 <script>
 import mapConfig from '@/config/mapconfig.js'
+import { mapMutations } from 'vuex'
  const baseMaps = mapConfig.leftTopBaseLayers
  export default {
    name: 'leftTop',
@@ -41,9 +56,9 @@ import mapConfig from '@/config/mapconfig.js'
      return {
        dataTree: mapConfig.vectorLayers, //树结构的数据
        dataBaseMapCheckList: baseMaps, //底图数据
-       checkedBaseMap: baseMaps[0].name,
+       checkedBaseMap: baseMaps[0].url,
        isHighLight: true,
-       tabIndex:0                      //切换标签的值,默认为0
+       tabIndex: 0                      //切换标签的值,默认为0
      }
    },
    mounted() {
@@ -53,8 +68,21 @@ import mapConfig from '@/config/mapconfig.js'
 
    },
    methods: {
-  
-   }
+     ...mapMutations([
+       'changeBaseLayer'
+      ]),
+     //上部标签发生变化
+     changeTabIndex(index) {
+       this.tabIndex = index
+     },
+     changeRadio(data) {
+      this.$store.commit('changeBaseLayer',data);
+     }
+    
+   },
+  computed: {
+    
+  }
  }
 </script>
 
@@ -71,46 +99,65 @@ import mapConfig from '@/config/mapconfig.js'
   justify-content: center;
   align-items: center;
   color: #00eeee;
-  text-shadow: 0px 0px 13px #00eeee;
+  // text-shadow: 0px 0px 13px #00eeee;
   font-weight: 600;
   span {
     box-sizing: border-box;    
     padding: 8px 8px 8px 0;
     line-height: 1;
     cursor: pointer;
+    .active {
+      color: #eee !important;
+      text-shadow: 0px 0px 13px #00eeee;
+      font-weight: 400;
+      background-color: rgba(20, 36, 68, 0.75);
+    }
   }
+
 }
+
 .panel {
   height: 78%;
   overflow: auto;
   width: 100%;
   box-sizing: border-box;
   padding: 10px 0;
-
-  .active {
-    	color: #00eeee !important;
-	    text-shadow: 0px 0px 13px #00eeee;
-	    font-weight: 400;
-      background-color: rgba(20, 36, 68, 0.75);
-    }
 }
 </style>
 <style>
 .el-tree-node:focus > .el-tree-node__content {
-  background-color: rgba(0, 211, 255, 0.4) !important;
-  color: #fff !important;
+  background-color: rgba(0,238,238,0.4) !important;
+  color: #eee !important;
 }
 .el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content {
-  background-color: rgba(0, 211, 255, 0.4) !important;
-  color: #fff !important;
+  background-color: rgba(0,238,238,0.4) !important;
+  color: #eee !important;
 }
 .el-tree-node__content:hover {
   /*树杈悬浮 背景色*/
-  background-color: rgba(151, 160, 167, 0.952) !important;
+  background-color: rgba(0,238,238,0.4) !important;
+  color: #eee;
 }
 .el-checkbox-button__inner:hover {
   /*悬浮文字色*/
-  color: #fff !important;
+  color: #eee !important;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  height: 7px;
+  background-color: rgba(20, 36, 68, 0.5);
+}
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 211, 255, 0.44);
+}
+::-webkit-scrollbar-corner {
+  background: rgba(0, 211, 255, 0.44);
+}
+.el-input__inner {
+  line-height: 1 !important;
 }
 </style>
 

@@ -1,0 +1,32 @@
+{
+  "type":  [
+    {
+      "value": "None",
+      "label": "无"
+    },
+    {
+      "value": "Point",
+      "label": "点"
+    },
+    {
+      "value": "LineString",
+      "label": "线"
+    },
+    {
+      "value": "Polygon",
+      "label": "多边形"
+    },
+    {
+      "value": "Circle",
+      "label": "圆"
+    },
+    {
+      "value": "Square",
+      "label": "正方形"
+    },
+    {
+      "value": "Box",
+      "label": "长方形"
+    }
+  ]
+}

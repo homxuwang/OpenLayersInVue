@@ -6,7 +6,9 @@
      <!-- 左边栏 -->
      <div class="left-content">
        <!-- 左边上半部分图层和操作 -->
-       <left-top class="left-content-top"></left-top>
+       <left-top class="left-content-top">
+         <router-view></router-view>
+       </left-top>
        <!-- 左边下半部分操作选择 -->
        <left-bottom class="left-content-bottom"></left-bottom>
      </div>

@@ -5,16 +5,19 @@
       "label": "绘图功能",
       "children": [
         {
-          "id": "circle",
-          "label": "圆"
+          "id": "addByCoordinates",
+          "label": "坐标添加",
+          "path": "coordinateDraw"
         },
         {
-          "id": "point",
-          "label": "点"
+          "id": "addByStandardDraw",
+          "label": "绘制标准图形",
+          "path": "standardDraw"
         },
         {
-          "id": "line",
-          "label": "线"
+          "id": "addByFreeDraw",
+          "label": "自由绘图",
+          "path": "freeDraw"
         }
       ]
     },
@@ -24,10 +27,12 @@
       "children": [
         {
           "id": "searchByClick",
-          "label": "点击查询"
+          "label": "点击查询",
+          "path": "clickCheck"
         },{
           "id": "searchByValue",
-          "label": "关键字查询"
+          "label": "关键字查询",
+          "path": "valueCheck"
         }
       ]
     }
