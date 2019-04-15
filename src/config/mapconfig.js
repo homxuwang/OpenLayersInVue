@@ -25,6 +25,13 @@ var streetmap = function(maptype) {
                     })
                 })
             break;
+            case 2:
+                maplayer = new TileLayer({
+                    source: new OSM({
+                        'url': 'http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'
+                    })
+                })
+            break;
         }
     }
     return [maplayer];
@@ -75,15 +82,21 @@ var leftTopBaseLayers = [
         "url": 0
     },
     {
-        "name": 'Arcgis在线午夜蓝底图',
+        "name": 'ArcGISChinaOnlineCommunity',
         "url": 1
     }
 ]
 
 
+/**
+ * 导航控件导航的区域
+ */
+var ZoomToExtent_Extent = [120.05144842, 30.95285152, 120.25160558, 36.04366038]
+
 export default {
     view,
     vectorLayers,
     streetmap,
-    leftTopBaseLayers
+    leftTopBaseLayers,
+    ZoomToExtent_Extent
 } 

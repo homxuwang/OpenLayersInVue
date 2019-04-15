@@ -59,8 +59,6 @@ import VMap from '@/components/map/map-component'
    background-size: 100% 100%;
    .app-content {
     width: 100%;
-    // height: -moz-calc(100% - 100px);
-    // height: -webkit-calc(100% - 100px);
     height: calc(100% - 86px);
     padding-bottom: 5px;
     display: -webkit-box;
@@ -87,30 +85,30 @@ import VMap from '@/components/map/map-component'
     bottom: 10px;
     .left-content-top{
       width: 100%;
-      height: 33%;
-      background-color: #1E88E5;
+      height: 35%;
+      background-color: #ffffff;
       background-size: 100% 100%;
       background-position: top left;
       background-repeat: no-repeat;
       box-sizing:border-box;
-      box-shadow:0px 0px 5px 2px #00eeee;
       &:last-child{
         padding: 0 3px 3px;
-        background-color: #1E88E5;
+        background-color: #ffffff;
       }
     }
     .left-content-bottom{
+      border-top: 2px solid black;
       width: 100%;
-      height: 66%;
-      background-color: #1E88E5;
+      height: 65%;
+      background-color: #ffffff;
       background-size: 100% 100%;
       background-position: top left;
       background-repeat: no-repeat;
       box-sizing:border-box;
-      box-shadow:0px 0px 5px 2px #00eeee;
+      // box-shadow:0px 0px 5px 2px #00eeee;
       &:last-child{
         padding: 0 3px 3px;
-        background-color: #1E88E5;
+        background-color: #ffffff;
       }
     }
   }
@@ -125,7 +123,7 @@ import VMap from '@/components/map/map-component'
       -webkit-transform: translateX(-38%);
       box-sizing: border-box;
       padding: 1.15% 0.45% 0.35% 1.15%;
-      box-shadow: 0px 0px 13px #00eeee;
+      // box-shadow: 0px 0px 13px #00eeee;
     }
 
   

@@ -9,14 +9,16 @@
         :value="item.value">
       </el-option>
   </el-select>
-  输入坐标:
+  
+  <span style="margin-top: 5px;">输入坐标:</span>
+  
   <el-input
     type="textarea"
     autosize
     placeholder="请输入内容"
     v-model="textarea">
   </el-input>
-  <el-button type="primary">确定</el-button>
+  <el-button type="primary" size="small">确定</el-button>
  </div>
 </template>
 

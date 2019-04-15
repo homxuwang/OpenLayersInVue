@@ -6,6 +6,7 @@ import coordinateDraw from '@/components/home/components/components/draw/coordin
 import clickCheck from '@/components/home/components/components/check/clickCheck'
 import valueCheck from '@/components/home/components/components/check/valueCheck'
 
+import defaultControl from '@/components/home/components/components/defaultControl/defaultControl'
 Vue.use(Router)
 
 export default new Router({
@@ -42,6 +43,10 @@ export default new Router({
         {
           path: 'valueCheck',
           component: valueCheck
+        },
+        {
+          path: 'defaultControl',
+          component: defaultControl
         }
       ],
       component: resolve => require(['@/components/home/home'], resolve)

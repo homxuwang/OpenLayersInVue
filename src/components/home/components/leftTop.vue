@@ -40,8 +40,7 @@
    <div class="panel" ref="options_panel" v-show="tabIndex==1">
      <keep-alive>
       <router-view />
-     </keep-alive>
-     
+     </keep-alive>     
    </div>
  </div>
 </template>
@@ -93,13 +92,10 @@ import { mapMutations } from 'vuex'
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  /*height: 36px;
-    line-height: 36px;*/
   height: 17.13%;
   justify-content: center;
   align-items: center;
   color: #00eeee;
-  // text-shadow: 0px 0px 13px #00eeee;
   font-weight: 600;
   span {
     box-sizing: border-box;    

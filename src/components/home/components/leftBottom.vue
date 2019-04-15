@@ -33,9 +33,7 @@
    },
    methods: {
      toRouter(data) {
-       if(!data.children){
-         this.$router.push({path:'/home/'+data.path})
-       }       
+        this.$router.push({path:'/home/'+data.path})
      }
    }
  }
@@ -48,8 +46,6 @@
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  /*height: 36px;
-    line-height: 36px;*/
   height: 9%;
   justify-content: center;
   align-items: center;
@@ -73,7 +69,7 @@
     	color: #00eeee !important;
 	    text-shadow: 0px 0px 13px #00eeee;
 	    font-weight: 400;
-      background-color: rgba(20, 36, 68, 0.75);
+      background-color: rgba(255, 255, 255, 1);
     }
 }
  

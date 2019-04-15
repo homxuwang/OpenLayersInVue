@@ -1,8 +1,14 @@
 {
   "options": [
     {
+      "id": "defaultControl",
+      "label": "地图控件",
+      "path": "defaultControl"
+    },
+    {
       "id": "draw",
       "label": "绘图功能",
+      "path": "coordinateDraw",
       "children": [
         {
           "id": "addByCoordinates",
@@ -24,6 +30,7 @@
     {
       "id": "search",
       "label": "查询功能",
+      "path": "clickCheck",
       "children": [
         {
           "id": "searchByClick",

@@ -26,13 +26,13 @@
     <!--全屏按钮-->
     <div class="guide-item" @click="ifFullScreen()" v-show="fullScreen==false">
       <svg class="icon_style">
-        <use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="'#fullScreen'" fill="#eee"></use>
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="'#fullScreen'" fill="#000"></use>
       </svg>
     </div>
     <!-- 退出全屏按钮 -->
     <div class="guide-item" @click="ifFullScreen()" v-show="fullScreen==true">
       <svg class="icon_style">
-        <use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="'#exitFullScreen'" fill="#eee"></use>
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="'#exitFullScreen'" fill="#000"></use>
       </svg>
     </div>
     <pop-for-confirm v-show="popForConfirmShow"
@@ -133,11 +133,11 @@ export default {
 
 <style lang="less" scoped>
 #app_header {
-  box-shadow:0px 0px 5px 2px #00eeee;
+  // box-shadow:0px 0px 5px 2px #00eeee;
   width: 100%;
   height: 40px;
   position: relative;
-  background-color: #1E88E5;
+  background-color: #FFFFFF;
   background-repeat: no-repeat;
   justify-content: space-between;
   .time-widget {    
@@ -148,8 +148,8 @@ export default {
     display: -ms-flexbox;
     display: flex;
     line-height: 20px;
-    color: #eee;
-    text-shadow: 0px 0px 13px rgb(0, 238, 238);
+    color: #000;
+    text-shadow: 0px 0px 13px rgb(238,238 , 238);
     font-size: 13px;
     .week {
       margin-left: 10px;
@@ -162,7 +162,7 @@ export default {
     -moz-transform: translate(50%,50%);
     -o-transform: translate(50%,50%);
     transform: translate(50%,50%);
-    color: #eee;
+    color: #000;
     text-shadow: 0px 0px 13px rgb(0, 238, 238);
     font-family: "moderat",sans-serif;
     font-size: 20px;
@@ -185,7 +185,7 @@ export default {
       display: inline-block;
       width: 22px;
       height: 22px;
-      color: rgb(0,255,255);
+      color: #000;
       margin-top: 5px;
     }
   }
@@ -206,7 +206,7 @@ export default {
       height: 100%;
       line-height: 30px;
       vertical-align: top;
-      color: #eee;
+      color: #000;
       text-shadow: 0px 0px 13px #00eeee;
       font-size: 13px;
       margin-right: 12px;

@@ -41,6 +41,9 @@
 │  │  │  │   │  ├── check
 │  │  │  │   │  │  ├── clickCheck.vue
 │  │  │  │   │  │  └── valueCheck.vue
+│  │  │  │   │  ├── check
+│  │  │  │   │  │  ├── defaultControl.vue
+│  │  │  │   │  │  └── defaultControlCode.js
 │  │  │  │   │  └── draw  
 │  │  │  │   │     ├── coordinateDraw.vue
 │  │  │  │   │     ├── freeDraw.vue
@@ -68,13 +71,29 @@
 │  │  │  └── ....
 │  ├── config                   地图配置目录
 │  │  └── mapconfig.js          地图配置文件
-│  └── routes                   前端路由
+│  ├── routes                   前端路由
 │  │  └── index.js
+│  └── store                    vuex
+│     ├── action.js
+│     ├── getter.js
+│     ├── index.js
+│     ├── mutations.js
+│     └── state.js
 ├── static                      纯静态资源，不会被wabpack构建。
 │  │  ├── json                  json配置文件
 │  │  │  └── options.json       地图操作选项配置
 │  │  └── config.js             用户、服务器配置文件
 ```
+
+# todoList
+
+- [x] 切换底图          2019/04/14
+- [x] 地图基本控件      2019/04/15
+   - [x] 比例尺
+   - [x] 鼠标位置
+   - [x] 鹰眼
+   - [x] 缩放条
+   - [x] 定位到某位置
 
 ## Build Setup
 
@@ -96,3 +115,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 # 参考
 * https://github.com/openlayer-tutorial-group/ol5-primer
+* http://develop.smaryun.com:81/API/JS/OL3InterfaceDemo/index.htm
