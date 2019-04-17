@@ -7,6 +7,8 @@ import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css'
 import loadImages from './components/utils/imagePath.js'
+import VueBus from 'vue-bus'
+
 import store from './store'
 
 // import 'animate.css/animate.min.css';
@@ -14,7 +16,7 @@ import store from './store'
 Vue.config.productionTip = false
 
 Vue.use(ElementUI);
-
+Vue.use(VueBus);
 //注册全局组件
 Vue.prototype.$loadImages = loadImages //获取图片
 

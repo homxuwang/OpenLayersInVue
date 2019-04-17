@@ -9,6 +9,25 @@ const mutations = {
   changeCenter : (state,value) => state.center = value,
   //***************地图控件相关*********************/
 
+  //添加控件总函数(后期改进)
+  addDefaultControl : (state,DefaultControlObj) => {
+    //添加对应的控件
+    state[DefaultControlObj.ControlType] = DefaultControlObj.DefaultControl
+    let ifShow = 'isShow' + DefaultControlObj.ControlType
+    //更改对应的显示状态
+    state[ifShow] = true
+  },
+
+  //删除控件总函数(后期改进)
+  removeDefaultControl: (state,DefaultControName) => {
+    state[DefaultControName] = false
+  },
+
+  //销毁控件总函数(后期修改)
+  destoryDefaultControl: (state,DefaultControName) => {
+    state[DefaultControName] = null
+  },
+
   //缩放控件
   addZoomSlider : (state,ZoomSlider) => {
     //添加缩放控件
@@ -73,6 +92,33 @@ const mutations = {
   destoryZoomToExtent: state => state.ZoomToExtent = null,
   
   //***************地图控件相关*********************/
+
+  //***************地图绘图相关*********************/
+  //添加显示vector的图层
+  addViewVector: (state,ViewVector) => state.ViewVector = ViewVector,
+  //添加绘制层
+  addDrawVectorSource: (state,DrawVectorSource) => state.DrawVectorSource = DrawVectorSource,
+  //添加要素,第二个参数为自定义要素对象，
+  //FeatureType属性为要素类型
+  //PointFeature、PolygonFeature等为要添加的要素类
+  addFeature: (state,FeatureObjs) => {
+    state[FeatureObjs.FeatureType] = FeatureObjs.PointFeature
+  },
+
+  //添加各种要素的函数
+  addPointFeature: (state,PointFeature) => state.PointFeature = PointFeature,
+
+  addLine_StringFeature: (state,Line_StringFeature) => state.Line_StringFeature = Line_StringFeature,
+
+  addPolygonFeature: (state,PolygonFeature) => state.PolygonFeature = PolygonFeature,
+
+  addCircleFeature: (state,CircleFeature) => state.CircleFeature = CircleFeature,
+
+  addSquareFeature: (state,SquareFeature) => state.SquareFeature = SquareFeature,
+
+  addRectangleFeature: (state,RectangleFeature) => state.RectangleFeature = RectangleFeature,
+
+  //***************地图绘图相关*********************/
 }
 
 export default mutations

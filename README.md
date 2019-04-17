@@ -41,7 +41,7 @@
 │  │  │  │   │  ├── check
 │  │  │  │   │  │  ├── clickCheck.vue
 │  │  │  │   │  │  └── valueCheck.vue
-│  │  │  │   │  ├── check
+│  │  │  │   │  ├── defaultControl
 │  │  │  │   │  │  ├── defaultControl.vue
 │  │  │  │   │  │  └── defaultControlCode.js
 │  │  │  │   │  └── draw  

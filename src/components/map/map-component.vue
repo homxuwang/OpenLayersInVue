@@ -12,18 +12,51 @@ import LayerGroup from 'ol/layer/Group';
 import OSM from 'ol/source/OSM';
 import TileLayer from 'ol/layer/Tile';
 import mapconfig from '../../config/mapconfig.js'
-import { mapState,mapGetters } from 'vuex'
+import initializationDrawElements from  '@/components/home/components/components/draw/initializationDrawElements.js'
+import { mapGetters } from 'vuex'
+import VectorLayer from './VectorLayer'
 //Vue.extend会将该组件挂在到vue上(全局组件)
 export default {
   name: 'map-component',
   data() {
     return {
-      map: null
+      map: null,
+      viewVector: null,
+      PointFeature: null,
+      VectorSource: null,
+      ViewSource: null
     }
+  },
+  created(){
+    // this.$bus.on('viewVector',(value) => {
+    //   console.log('map got the viewVector')
+    //   this.viewVector = value
+    //   this.map.addLayer(this.viewVector)
+    //   this.map.render();
+    //   console.log(this.map.getLayers())
+    // })
+    this.$bus.on('PointFeature',(value) => {
+      this.PointFeature = value
+      this.VectorSource = initializationDrawElements.DrawVectorSource();
+      this.VectorSource.addFeature(this.PointFeature)
+
+      console.log(this.VectorSource.getFeatures()[0].getGeometry())
+
+      this.ViewSource = initializationDrawElements.ViewVector();
+
+      this.ViewSource.setSource(this.VectorSource )
+
+      this.map.addLayer(this.ViewSource)
+      
+      this.map.render();
+    })
   },
   //页面渲染完成后
   mounted() {
    this._initMap();
+  },
+  beforeDestroy() {
+    this.$bus.off('value')
   },
   computed: {
     ...mapGetters([
@@ -31,33 +64,27 @@ export default {
       'layers',
       //地图中心位置
       'center',
-      //地图缩放控件
-      'getZoomSlider',
+      // 获取地图控件总函数
+      'getDefaultControl',
+      //获取地图默认控件显示状态总函数
+      'getDefaultControlShowState',
       //地图缩放控件显示状态
       'isShowZoomSlider',
-      //地图鼠标位置控件
-      'getMousePosition',
       //地图鼠标位置控件显示状态
       'isShowMousePosition',
-      //地图比例尺控件
-      'getScaleLine',
       //地图比例尺控件显示状态
       'isShowScaleLine',
-      //地图鹰眼控件
-      'getOverviewMap',
       //地图鹰眼控件显示状态
       'isShowOverviewMap',
-      //地图导航控件
-      'getZoomToExtent',
       //地图导航控件显示状态
       'isShowZoomToExtent'
     ]),
   },  
   //注意~~！！
   //openlayers不支持响应式，要手动触发图层更新
-  watch: {    
+  watch: {
     //检测到图层发生变化则手动更新图层
-     layers(newLayers) {
+     layers(newLayers,oldLayers) {
       if (newLayers.length) {
         let layerGroup = new LayerGroup({
           layers: newLayers
@@ -67,56 +94,60 @@ export default {
      },
      //检测到缩放控件变化时进行显示/隐藏操作
      isShowZoomSlider(newShow,oldShow) {
+       let stateZoomSlider = this.getDefaultControl('ZoomSlider')
        if(newShow && !oldShow) {
-         this.map && this.map.addControl(this.getZoomSlider);
+         this.map && this.map.addControl(stateZoomSlider);
        }else if(!newShow && oldShow){
-         this.map && this.map.removeControl(this.getZoomSlider);
-         this.$store.commit('destoryZoomSlider')
+         this.map && this.map.removeControl(stateZoomSlider);
+         this.$store.commit('destoryDefaultControl','ZoomSlider')
        }
      },
      //检测到鼠标位置控件变化时进行显示/隐藏操作
      isShowMousePosition(newShow,oldShow) {
+       let stateMousePosition = this.getDefaultControl('MousePosition')
        if(newShow && !oldShow){
-         this.map && this.map.addControl(this.getMousePosition);
+         this.map && this.map.addControl(stateMousePosition);
        }else if(!newShow && oldShow){
-         this.map && this.map.removeControl(this.getMousePosition);
-         this.$store.commit('destoryMousePosition')
+         this.map && this.map.removeControl(stateMousePosition);
+         this.$store.commit('destoryDefaultControl','MousePosition')
        }
      },
      //检测到地图比例尺控件变化时进行显示/隐藏操作
      isShowScaleLine(newShow,oldShow) {
+       let stateScaleLine = this.getDefaultControl('ScaleLine')
        if(newShow && !oldShow){
-         this.map && this.map.addControl(this.getScaleLine);
+         this.map && this.map.addControl(stateScaleLine);
        }else if(!newShow && oldShow){
-         this.map && this.map.removeControl(this.getScaleLine);
-         this.$store.commit('destoryScaleLine')
+         this.map && this.map.removeControl(stateScaleLine);
+         this.$store.commit('destoryDefaultControl','ScaleLine')
        }
      },
      //检测到鹰眼控件变化时进行显示/隐藏操作
      isShowOverviewMap(newShow,oldShow) {
+       let stateScaleLine = this.getDefaultControl('OverviewMap')
        if(newShow && !oldShow){
-         this.map && this.map.addControl(this.getOverviewMap);
+         this.map && this.map.addControl(stateScaleLine);
        }else if(!newShow && oldShow){
-         this.map && this.map.removeControl(this.getOverviewMap);
-         this.$store.commit('destoryOverviewMap')
+         this.map && this.map.removeControl(stateScaleLine);
+         this.$store.commit('destoryDefaultControl','OverviewMap')
        }
      },
      //检测到导航控件时进行显示/隐藏操作
      isShowZoomToExtent(newShow,oldShow) {
+       let stateZoomToExtent = this.getDefaultControl('ZoomToExtent')
         if(newShow && !oldShow){
-         this.map && this.map.addControl(this.getZoomToExtent);
+         this.map && this.map.addControl(stateZoomToExtent);
        }else if(!newShow && oldShow){
-         this.map && this.map.removeControl(this.getZoomToExtent);
-         this.$store.commit('destoryZoomToExtent')
+         this.map && this.map.removeControl(stateZoomToExtent);
+         this.$store.commit('destoryDefaultControl','ZoomToExtent')
        }
-     }
-     
+     }     
   },
   methods: {
     _initMap() {
       var mapcontainer = this.$refs.mapCont;
       this.map =  new Map({
-        target:  this.$refs.mapCont,
+        target:  mapcontainer,
         layers: this.layers,
         view: new View({
           projection: "EPSG:4326",
@@ -135,7 +166,7 @@ export default {
   height: 100%;
   }
   /* 鼠标位置控件 */
-  .mousePositionValue {
+  #mousePositionValue {
     color:#FFFFFF; 
   }
  #mousePosition{

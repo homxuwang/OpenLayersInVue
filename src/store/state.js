@@ -24,8 +24,29 @@ const state = {
   //地图导航控件
   ZoomToExtent: null,
   //地图导航控件显示状态
-  isShowZoomToExtent: false
+  isShowZoomToExtent: false,
   //***************地图控件相关*********************/
+
+  //***************地图绘图相关*********************/
+
+  //绘图的显示图层
+  ViewVector: null,
+  //绘图的绘制图层
+  DrawVectorSource: null,
+  //绘图的点要素
+  PointFeature: null,
+  //绘图的线要素
+  Line_StringFeature: null,
+  //绘图的普通多边形要素
+  PolygonFeature: null,
+  //绘图的圆要素
+  CircleFeature: null,
+  //绘图的正方形要素
+  SquareFeature: null,
+  //绘图的长方形要素
+  RectangleFeature: null,
+
+  //***************地图绘图相关*********************/
 };
 
 export default state
