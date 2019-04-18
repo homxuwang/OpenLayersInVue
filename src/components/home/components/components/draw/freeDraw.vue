@@ -4,9 +4,9 @@
     <el-select v-model="value" placeholder="请选择" size="small">
       <el-option
         v-for="item in type"
-        :key="item.value"
+        :key="item.type"
         :label="item.label"
-        :value="item.value">
+        :type="item.type">
       </el-option>
   </el-select>
   <el-button type="primary" size="small" >清空图形</el-button>
@@ -18,7 +18,7 @@
    name: 'freeDraw',
    data () {
      return {
-       value: 'None',
+       type: 'None',
        type:[
         {
           "value": "None",

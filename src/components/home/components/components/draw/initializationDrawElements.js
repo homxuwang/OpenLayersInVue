@@ -6,7 +6,7 @@ import olLineString from 'ol/geom/LineString'
 import olPolygon from 'ol/geom/Polygon'
 
 import VectorSource from 'ol/source/Vector'
-import VectorLayer from 'ol/layer/Vector'
+import LayerVector from 'ol/layer/Vector'
 //***样式相关 */
 import { Icon,Style,Circle} from 'ol/style.js'
 import Stroke from 'ol/style/Stroke'
@@ -15,9 +15,9 @@ import Fill from 'ol/style/Fill'
 //***样式相关 */
 const initializationDrawElements = {
 
-  PointFeature: (point) => { 
+  PointFeature: (coordinate) => { 
     return new olFeature({
-    geometry: new olPoint([114.29144842, 30.57285152])
+    geometry: new olPoint(coordinate)
     // geometry: new olPoint([11505912.0, 4011415.0])
   })},
 
@@ -33,7 +33,7 @@ const initializationDrawElements = {
 
   DrawVectorSource : () => {return new VectorSource()},
 
-  ViewVector:() =>{ return new VectorLayer() } 
+  LayerVector:() =>{ return new LayerVector() } 
 
 
 }

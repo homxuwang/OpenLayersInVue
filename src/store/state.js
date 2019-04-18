@@ -30,7 +30,7 @@ const state = {
   //***************地图绘图相关*********************/
 
   //绘图的显示图层
-  ViewVector: null,
+  LayerVector: null,
   //绘图的绘制图层
   DrawVectorSource: null,
   //绘图的点要素

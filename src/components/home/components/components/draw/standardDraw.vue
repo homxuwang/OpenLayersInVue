@@ -1,9 +1,9 @@
 <template>
  <div>
     选择绘制的类型:
-    <el-select v-model="value" placeholder="请选择" size="small">
+    <el-select v-model="typeList" placeholder="请选择" size="small">
       <el-option
-        v-for="item in type"
+        v-for="item in typeList"
         :key="item.value"
         :label="item.label"
         :value="item.value">
@@ -22,7 +22,8 @@ const WIDTH = 3;
    data () {
      return {
        value: 'None',  //选中的选项的值
-       type: []
+       typeList: []
+
      }
    },
    components: {
@@ -31,7 +32,7 @@ const WIDTH = 3;
    created() {
      //获取画图类型列表
     let dataOfType = require("../../../../../../static/json/drawType.json");
-    this.type = dataOfType.type
+    this.typeList = dataOfType.root
    }
  }
 </script>

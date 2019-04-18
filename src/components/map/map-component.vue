@@ -22,33 +22,25 @@ export default {
     return {
       map: null,
       viewVector: null,
-      PointFeature: null,
-      VectorSource: null,
-      ViewSource: null
+      PointFeature: null, //点要素
+      VectorSource: null, //LayerSource存放点要素
+      LayerVector: null   //LayerVector存放source
     }
   },
   created(){
-    // this.$bus.on('viewVector',(value) => {
-    //   console.log('map got the viewVector')
-    //   this.viewVector = value
-    //   this.map.addLayer(this.viewVector)
-    //   this.map.render();
-    //   console.log(this.map.getLayers())
-    // })
-    this.$bus.on('PointFeature',(value) => {
+    //接受Point元素并添加到地图
+    this.$bus.on('addPointFeature',(value) => {
       this.PointFeature = value
-      this.VectorSource = initializationDrawElements.DrawVectorSource();
-      this.VectorSource.addFeature(this.PointFeature)
-
-      console.log(this.VectorSource.getFeatures()[0].getGeometry())
-
-      this.ViewSource = initializationDrawElements.ViewVector();
-
-      this.ViewSource.setSource(this.VectorSource )
-
-      this.map.addLayer(this.ViewSource)
       
-      this.map.render();
+      //调用通用函数判断是否有VectorSource和LayerSource
+      this._checkVectorSource();
+      this._checkLayerVector();
+      this.VectorSource.addFeature(this.PointFeature)
+      
+      // this.map.render();
+    }),
+    this.$bus.on('clearVectorSource',() => {
+      this.VectorSource.clear();
     })
   },
   //页面渲染完成后
@@ -59,6 +51,7 @@ export default {
     this.$bus.off('value')
   },
   computed: {
+    //store中的getters,全局状态
     ...mapGetters([
       //地图底图
       'layers',
@@ -155,6 +148,20 @@ export default {
           center: this.center
         })
       });
+    },    
+    _checkVectorSource() {            
+      //如果没有VectorSource则进行创建
+      if(this.VectorSource == null){
+        this.VectorSource = initializationDrawElements.DrawVectorSource();
+      }      
+    },
+    _checkLayerVector() {
+      //如果没有LayerVector则进行创建
+      if(this.LayerVector == null){
+        this.LayerVector = initializationDrawElements.LayerVector();
+        this.LayerVector.setSource(this.VectorSource)      
+        this.map.addLayer(this.LayerVector)
+      }      
     }
   }
 }

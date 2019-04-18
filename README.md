@@ -46,7 +46,8 @@
 │  │  │  │   │  │  └── defaultControlCode.js
 │  │  │  │   │  └── draw  
 │  │  │  │   │     ├── coordinateDraw.vue
-│  │  │  │   │     ├── freeDraw.vue
+│  │  │  │   │     ├── freeDraw.vue  
+│  │  │  │   │     ├── initializationDrawElements.js
 │  │  │  │   │     └── standardDraw.vue
 │  │  │  │   ├── leftBottom.vue
 │  │  │  │   └── leftTop.vue
@@ -94,6 +95,11 @@
    - [x] 鹰眼
    - [x] 缩放条
    - [x] 定位到某位置
+- [ ] 绘图功能
+   - [ ] 坐标添加
+      - [x] 点添加      2019/04/18
+
+ todo:切换底图时绘制的图形会消失
 
 ## Build Setup
 

@@ -95,7 +95,7 @@ const mutations = {
 
   //***************地图绘图相关*********************/
   //添加显示vector的图层
-  addViewVector: (state,ViewVector) => state.ViewVector = ViewVector,
+  addLayerVector: (state,LayerVector) => state.LayerVector = LayerVector,
   //添加绘制层
   addDrawVectorSource: (state,DrawVectorSource) => state.DrawVectorSource = DrawVectorSource,
   //添加要素,第二个参数为自定义要素对象，

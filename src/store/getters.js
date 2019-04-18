@@ -39,7 +39,7 @@ const getters = {//实时监听state值的变化(最新状态)
 
   getDrawVectorSource: state => state.DrawVectorSource,
 
-  getViewVector: state => state.ViewVector,
+  getLayerVector: state => state.LayerVector,
 
   getFeature: (state,featureName) => state[featureName],
 
