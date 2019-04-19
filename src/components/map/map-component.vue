@@ -22,25 +22,29 @@ export default {
     return {
       map: null,
       viewVector: null,
-      PointFeature: null, //点要素
+      toBeAddedFeature: null, //要添加的绘图要素
       VectorSource: null, //LayerSource存放点要素
       LayerVector: null   //LayerVector存放source
     }
   },
   created(){
     //接受Point元素并添加到地图
-    this.$bus.on('addPointFeature',(value) => {
-      this.PointFeature = value
-      
-      //调用通用函数判断是否有VectorSource和LayerSource
+    this.$bus.on('addtoBeAddedFeature',(value) => {
+      console.log(value)
+      this.toBeAddedFeature = value
+      //调用私有函数判断是否有VectorSource和LayerSource
       this._checkVectorSource();
       this._checkLayerVector();
-      this.VectorSource.addFeature(this.PointFeature)
+
+      this.VectorSource.addFeature(this.toBeAddedFeature)
       
       // this.map.render();
     }),
+    //清空绘制的图形
     this.$bus.on('clearVectorSource',() => {
-      this.VectorSource.clear();
+      if(this.VectorSource != null){
+        this.VectorSource.clear();
+      }      
     })
   },
   //页面渲染完成后

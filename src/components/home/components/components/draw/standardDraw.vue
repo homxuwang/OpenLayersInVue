@@ -1,7 +1,7 @@
 <template>
  <div>
     选择绘制的类型:
-    <el-select v-model="typeList" placeholder="请选择" size="small">
+    <el-select v-model="value" placeholder="请选择" size="small">
       <el-option
         v-for="item in typeList"
         :key="item.value"
@@ -14,9 +14,6 @@
 </template>
 
 <script>
-const TYPE = 'draw';
-const WIDTH = 3;
-
  export default {
    name: 'standardDraw',
    data () {

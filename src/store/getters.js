@@ -45,7 +45,7 @@ const getters = {//实时监听state值的变化(最新状态)
 
   getPointFeature: state => state.PointFeature,
 
-  getLine_StringFeature: state => state.Line_StringFeature,
+  getLineStringFeature: state => state.LineStringFeature,
 
   getPolygonFeature: state => state.PolygonFeature,
 

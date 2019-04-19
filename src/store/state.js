@@ -36,7 +36,7 @@ const state = {
   //绘图的点要素
   PointFeature: null,
   //绘图的线要素
-  Line_StringFeature: null,
+  LineStringFeature: null,
   //绘图的普通多边形要素
   PolygonFeature: null,
   //绘图的圆要素

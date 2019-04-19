@@ -108,7 +108,7 @@ const mutations = {
   //添加各种要素的函数
   addPointFeature: (state,PointFeature) => state.PointFeature = PointFeature,
 
-  addLine_StringFeature: (state,Line_StringFeature) => state.Line_StringFeature = Line_StringFeature,
+  addLineStringFeature: (state,LineStringFeature) => state.LineStringFeature = LineStringFeature,
 
   addPolygonFeature: (state,PolygonFeature) => state.PolygonFeature = PolygonFeature,
 

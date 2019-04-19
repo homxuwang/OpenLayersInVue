@@ -3,10 +3,10 @@
    选择绘制的类型:
     <el-select v-model="value" placeholder="请选择" size="small">
       <el-option
-        v-for="item in type"
-        :key="item.type"
+        v-for="item in typeList"
+        :key="item.value"
         :label="item.label"
-        :type="item.type">
+        :value="item.value">
       </el-option>
   </el-select>
   <el-button type="primary" size="small" >清空图形</el-button>
@@ -18,24 +18,25 @@
    name: 'freeDraw',
    data () {
      return {
-       type: 'None',
-       type:[
-        {
-          "value": "None",
-          "label": "无"
-        },
-        {
-          "value": "LineString",
-          "label": "线"
-        },
-        {
-          "value": "Polygon",
-          "label": "多边形"
-        },
-        {
-          "value": "Circle",
-          "label": "圆"
-        }
+       value: 'None',
+
+       typeList:[
+          {
+            "value": "None",
+            "label": "无"
+          },
+          {
+            "value": "LineString",
+            "label": "线"
+          },
+          {
+            "value": "Polygon",
+            "label": "多边形"
+          },
+          {
+            "value": "Circle",
+            "label": "圆"
+          }
       ]
      }
    },
