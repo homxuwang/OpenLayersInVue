@@ -30,7 +30,7 @@ export default {
   created(){
     //接受Point元素并添加到地图
     this.$bus.on('addtoBeAddedFeature',(value) => {
-      console.log(value)
+      // console.log(value)
       this.toBeAddedFeature = value
       //调用私有函数判断是否有VectorSource和LayerSource
       this._checkVectorSource();
@@ -165,7 +165,7 @@ export default {
         this.LayerVector = initializationDrawElements.LayerVector();
         this.LayerVector.setSource(this.VectorSource)      
         this.map.addLayer(this.LayerVector)
-      }      
+      }
     }
   }
 }
