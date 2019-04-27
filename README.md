@@ -5,6 +5,12 @@
 "element-ui": "^2.4.4",
 "ol": "^5.3.1"
 ```
+vuex vue-router eventBus
+# 在线测试
+
+地址:https://homxuwang.github.io/OpenLayersInVue/dist
+用户名: admin
+密码: 123
 
 # vueopenlayers
 
@@ -63,7 +69,8 @@
 │  │  ├── utils                  工具目录
 │  │  │  ├── dateUtil.js         日期辅助函数
 │  │  │  ├── localStorage.js     存取登录信息
-│  │  │  └── imagePath.js        获取图片路径
+│  │  │  ├── imagePath.js        获取图片路径
+│  │  │  └── vectorLayerFactory.js 创建矢量图层工厂函数库
 │  ├── assets                    资源目录，这里的资源会被wabpack构建
 │  │  └── images
 │  │  │  ├── logo.png
@@ -81,12 +88,17 @@
 │     ├── mutations.js
 │     └── state.js
 ├── static                      纯静态资源，不会被wabpack构建。
+│  │  ├── data                  数据文件
+│  │  │  ├── whPoint_geojson.json      武汉矢量点数据文件
+│  │  │  ├── whPolygon_geojson.json    武汉矢量区划数据文件  
+│  │  │  └── whRoads_geojson.json      武汉矢量路网数据文件  
 │  │  ├── json                  json配置文件
 │  │  │  └── options.json       地图操作选项配置
 │  │  └── config.js             用户、服务器配置文件
 ```
 
 # todoList
+- [x] 矢量图层控制      2019/04/27(加载本地矢量geojson文件,因为没有矢量切片所以加载会很慢,且比较耗费内存资源.暂时使用同步加载,没有采用异步加载的方式.todo: 异步加载数据)
 
 - [x] 切换底图          2019/04/14
 - [x] 地图基本控件      2019/04/15

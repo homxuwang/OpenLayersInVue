@@ -53,21 +53,25 @@ var vectorLayers = [
     {
         "id": "root",
         "label": "图层",
-        "children": [{
+        "children": [
+        {
+            "id": "water",
+            "label": '武汉市区划',
+            "url": '@/../static/data/whPolygon_geojson.json',
+            "vectorLayer": null
+        },
+        {
             "id": "road",
             "label": '武汉市路网',
-            "url": ''
+            "url": '@/../static/data/whRoads_geojson.json',
+            "vectorLayer": null
         },
         {
             "id": "point",
             "label": '武汉市兴趣点',
-            "url": ''
-        },
-        {
-            "id": "water",
-            "label": '武汉市水网',
-            "url": ''
-        }
+            "url": '@/../static/data/whPoint_geojson.json',
+            "vectorLayer": null
+        }        
         ]
     }
 ]

@@ -1,5 +1,4 @@
 import olFeature from 'ol/Feature'
-import olgeom from 'ol/geom'
 import olPoint from 'ol/geom/Point'
 import olCircle from 'ol/geom/Circle'
 import olLineString from 'ol/geom/LineString'
@@ -7,7 +6,6 @@ import {fromCircle as fromCircle,fromExtent as fromExtent} from 'ol/geom/Polygon
 import olPolygon from 'ol/geom/Polygon'
 //坐标转换
 import {transform} from 'ol/proj.js'
-import Sphere from 'ol/sphere'
 import VectorSource from 'ol/source/Vector'
 import LayerVector from 'ol/layer/Vector'
 //***样式相关 */

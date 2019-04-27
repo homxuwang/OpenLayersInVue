@@ -18,7 +18,8 @@
               node-key="id"
               ref="tree"
               :expand-on-click-node="false"
-              :highlight-current="isHighLight">
+              :highlight-current="isHighLight"
+              @check-change="changeTreeLayer">
      </el-tree>
 
      <!-- 地图check组件 -->
@@ -48,6 +49,7 @@
 <script>
 import mapConfig from '@/config/mapconfig.js'
 import { mapMutations } from 'vuex'
+import vectorLayerFactory from '@/components/utils/vectorLayerFactory'
  const baseMaps = mapConfig.leftTopBaseLayers
  export default {
    name: 'leftTop',
@@ -57,7 +59,7 @@ import { mapMutations } from 'vuex'
        dataBaseMapCheckList: baseMaps, //底图数据
        checkedBaseMap: baseMaps[0].url,
        isHighLight: true,
-       tabIndex: 0                      //切换标签的值,默认为0
+       tabIndex: 0,                      //切换标签的值,默认为0
      }
    },
    mounted() {
@@ -74,8 +76,30 @@ import { mapMutations } from 'vuex'
      changeTabIndex(index) {
        this.tabIndex = index
      },
+     //切换底图的radio选中
      changeRadio(data) {
       this.$store.commit('changeBaseLayer',data);
+     },
+     //图层树控件变化时
+     changeTreeLayer(data,ischecked,child) {
+       //如果没有孩子节点的话
+       if(!data.children){
+         console.log(data,ischecked,child)
+         if(!data.vectorLayer){
+           let vectorSource = vectorLayerFactory.VectorSource(data.url)
+           let vectorLayer = vectorLayerFactory.VectorLayer(vectorSource)
+           data.vectorLayer = vectorLayer
+         }
+         //如果选中,则创建对应的矢量图层对象,传递给map
+         if(ischecked){
+           this.$bus.$emit('addwhLayer',data.vectorLayer)
+         }
+         //如果取消选中,则将图层对象传给map,让其进行remove
+         else{
+           this.$bus.$emit('removewhLayer',data.vectorLayer)
+           data.vectorLayer = null
+         }
+       }
      }
     
    },

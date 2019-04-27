@@ -28,6 +28,7 @@ export default {
     }
   },
   created(){
+    let _this = this
     //接受Point元素并添加到地图
     this.$bus.on('addtoBeAddedFeature',(value) => {
       // console.log(value)
@@ -45,6 +46,18 @@ export default {
       if(this.VectorSource != null){
         this.VectorSource.clear();
       }      
+    }),
+    //添加武汉市的矢量数据
+    this.$bus.on('addwhLayer', (vectorLayer) => {
+      _this.map.addLayer(vectorLayer)
+    }),
+    //删除武汉市的矢量数据
+    this.$bus.on('removewhLayer', (vectorLayer) => {
+      // console.log(vectorLayer.getSource().getFeatures())
+      vectorLayer.getSource().clear()
+      // console.log(vectorLayer.getSource().getFeatures())
+      _this.map.removeLayer(vectorLayer)
+      
     })
   },
   //页面渲染完成后
