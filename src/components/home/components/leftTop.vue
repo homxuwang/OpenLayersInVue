@@ -39,9 +39,9 @@
 
    <!-- 操作视图 -->
    <div class="panel" ref="options_panel" v-show="tabIndex==1">
-     <keep-alive>
+     <!-- <keep-alive> -->
       <router-view />
-     </keep-alive>     
+     <!-- </keep-alive>      -->
    </div>
  </div>
 </template>
@@ -62,8 +62,15 @@ import vectorLayerFactory from '@/components/utils/vectorLayerFactory'
        tabIndex: 0,                      //切换标签的值,默认为0
      }
    },
+   created() {
+     
+   },
    mounted() {
-     console.log( mapConfig.leftTopBaseLayers)
+    //  console.log( mapConfig.leftTopBaseLayers)
+    let _this = this
+    this.$bus.on('changeTab',function(tabIndex){
+       _this.tabIndex = tabIndex
+     })
    },
    components: {
 

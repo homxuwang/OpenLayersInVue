@@ -33,6 +33,11 @@
    },
    methods: {
      toRouter(data) {
+        this.$bus.$emit('changeTab',1)
+        console.log(data.id)
+        if(data.id == "addByStandardDraw" || data.id == "addByFreeDraw"){
+          this.$bus.$emit('endDraw')
+        }
         this.$router.push({path:'/home/'+data.path})
      }
    }

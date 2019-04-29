@@ -15,7 +15,7 @@
 
      <!-- 右边地图 -->
      <div class="right-content">
-       <v-map class="v_map"></v-map>
+       <v-map></v-map>
      </div>
    </div>
 

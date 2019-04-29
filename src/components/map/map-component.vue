@@ -13,6 +13,8 @@ import OSM from 'ol/source/OSM';
 import TileLayer from 'ol/layer/Tile';
 import mapconfig from '../../config/mapconfig.js'
 import initializationDrawElements from  '@/components/home/components/components/draw/initializationDrawElements.js'
+import standardDraw from  '@/components/home/components/components/draw/standardDraw.js'
+import freeDrawUtils from  '@/components/home/components/components/draw/freeDraw.js'
 import { mapGetters } from 'vuex'
 import VectorLayer from './VectorLayer'
 //Vue.extend会将该组件挂在到vue上(全局组件)
@@ -24,28 +26,29 @@ export default {
       viewVector: null,
       toBeAddedFeature: null, //要添加的绘图要素
       VectorSource: null, //LayerSource存放点要素
-      LayerVector: null   //LayerVector存放source
+      LayerVector: null,   //LayerVector存放source
+      interactiondraw: null  //绘图控件
     }
   },
   created(){
     let _this = this
-    //接受Point元素并添加到地图
+    //接受绘图元素并添加到地图
     this.$bus.on('addtoBeAddedFeature',(value) => {
       // console.log(value)
-      this.toBeAddedFeature = value
+      _this.toBeAddedFeature = value
       //调用私有函数判断是否有VectorSource和LayerSource
-      this._checkVectorSource();
-      this._checkLayerVector();
+      _this._checkVectorSource();
+      _this._checkLayerVector();
 
-      this.VectorSource.addFeature(this.toBeAddedFeature)
+      _this.VectorSource.addFeature(_this.toBeAddedFeature)
       
       // this.map.render();
     }),
     //清空绘制的图形
     this.$bus.on('clearVectorSource',() => {
       if(this.VectorSource != null){
-        this.VectorSource.clear();
-      }      
+        _this.VectorSource.clear();
+      }
     }),
     //添加武汉市的矢量数据
     this.$bus.on('addwhLayer', (vectorLayer) => {
@@ -58,6 +61,31 @@ export default {
       // console.log(vectorLayer.getSource().getFeatures())
       _this.map.removeLayer(vectorLayer)
       
+    }),
+    // 绘图
+    this.$bus.on('interactionDrawEvent',(data) => {
+      if(_this.interactiondraw != null){
+        _this.map.removeInteraction(_this.interactiondraw)
+      }
+      
+      //调用私有函数判断是否有VectorSource和LayerSource
+      _this._checkVectorSource(); //矢量图层Vector作为绘制层
+      _this._checkLayerVector();
+      
+      //初始化绘图控件
+      let source  = _this.VectorSource
+      if(!data.freeDraw){
+        _this.interactiondraw = standardDraw.interactionDraw(source,data)
+      }
+      else{
+        _this.interactiondraw = freeDrawUtils.freeDraw(source,data.type)
+      }
+
+      _this.map.addInteraction(_this.interactiondraw)
+    }),
+    //停止绘制
+    this.$bus.on('endDraw',() => {
+      _this.map.removeInteraction(_this.interactiondraw)
     })
   },
   //页面渲染完成后
@@ -99,16 +127,16 @@ export default {
         let layerGroup = new LayerGroup({
           layers: newLayers
         });
-        this.map && this.map.setLayerGroup(layerGroup);
+        this.map.setLayerGroup(layerGroup);
       }
      },
      //检测到缩放控件变化时进行显示/隐藏操作
      isShowZoomSlider(newShow,oldShow) {
        let stateZoomSlider = this.getDefaultControl('ZoomSlider')
        if(newShow && !oldShow) {
-         this.map && this.map.addControl(stateZoomSlider);
+         this.map.addControl(stateZoomSlider);
        }else if(!newShow && oldShow){
-         this.map && this.map.removeControl(stateZoomSlider);
+         tthis.map.removeControl(stateZoomSlider);
          this.$store.commit('destoryDefaultControl','ZoomSlider')
        }
      },
@@ -116,9 +144,9 @@ export default {
      isShowMousePosition(newShow,oldShow) {
        let stateMousePosition = this.getDefaultControl('MousePosition')
        if(newShow && !oldShow){
-         this.map && this.map.addControl(stateMousePosition);
+         this.map.addControl(stateMousePosition);
        }else if(!newShow && oldShow){
-         this.map && this.map.removeControl(stateMousePosition);
+         this.map.removeControl(stateMousePosition);
          this.$store.commit('destoryDefaultControl','MousePosition')
        }
      },
@@ -126,9 +154,9 @@ export default {
      isShowScaleLine(newShow,oldShow) {
        let stateScaleLine = this.getDefaultControl('ScaleLine')
        if(newShow && !oldShow){
-         this.map && this.map.addControl(stateScaleLine);
+         this.map.addControl(stateScaleLine);
        }else if(!newShow && oldShow){
-         this.map && this.map.removeControl(stateScaleLine);
+         this.map.removeControl(stateScaleLine);
          this.$store.commit('destoryDefaultControl','ScaleLine')
        }
      },
@@ -136,9 +164,9 @@ export default {
      isShowOverviewMap(newShow,oldShow) {
        let stateScaleLine = this.getDefaultControl('OverviewMap')
        if(newShow && !oldShow){
-         this.map && this.map.addControl(stateScaleLine);
+         this.map.addControl(stateScaleLine);
        }else if(!newShow && oldShow){
-         this.map && this.map.removeControl(stateScaleLine);
+         this.map.removeControl(stateScaleLine);
          this.$store.commit('destoryDefaultControl','OverviewMap')
        }
      },
@@ -146,9 +174,9 @@ export default {
      isShowZoomToExtent(newShow,oldShow) {
        let stateZoomToExtent = this.getDefaultControl('ZoomToExtent')
         if(newShow && !oldShow){
-         this.map && this.map.addControl(stateZoomToExtent);
+         this.map.addControl(stateZoomToExtent);
        }else if(!newShow && oldShow){
-         this.map && this.map.removeControl(stateZoomToExtent);
+         this.map.removeControl(stateZoomToExtent);
          this.$store.commit('destoryDefaultControl','ZoomToExtent')
        }
      }     

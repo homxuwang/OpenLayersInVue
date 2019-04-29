@@ -12,6 +12,7 @@ import LayerVector from 'ol/layer/Vector'
 import { Icon,Style,Circle,Fill,Stroke} from 'ol/style.js'
 //***样式相关 */
 
+
 // var wgs84Sphere = new Sphere(6378137);
 // var groundRadius = wgs84Sphere.haversineDistance(
 //   ProjTransforms(center, 'EPSG:3857', 'EPSG:4326'), 
