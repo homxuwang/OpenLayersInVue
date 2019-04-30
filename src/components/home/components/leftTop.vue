@@ -39,9 +39,9 @@
 
    <!-- 操作视图 -->
    <div class="panel" ref="options_panel" v-show="tabIndex==1">
-     <!-- <keep-alive> -->
+     <keep-alive>
       <router-view />
-     <!-- </keep-alive>      -->
+     </keep-alive>     
    </div>
  </div>
 </template>

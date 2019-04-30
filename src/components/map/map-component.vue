@@ -85,7 +85,9 @@ export default {
     }),
     //停止绘制
     this.$bus.on('endDraw',() => {
-      _this.map.removeInteraction(_this.interactiondraw)
+      if(_this.interactiondraw){
+        _this.map.removeInteraction(_this.interactiondraw)
+      }      
     })
   },
   //页面渲染完成后
