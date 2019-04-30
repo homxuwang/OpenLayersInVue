@@ -146,7 +146,7 @@ export default {
           type: 'success'
         })
         LS.setLS('userInfo',userInfo) //吧登陆成功的用户信息存起来
-        this.$router.push(this.$route.query.redirect || '/home')  //跳转到'/map'页面
+        this.$router.push(this.$route.query.redirect || '/home')  //跳转到'/home'页面
       }else {
         this.$message.error('账号或密码不正确！')
       }
