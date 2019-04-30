@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import freeDraw from '@/components/home/components/components/draw/freeDraw'
-import standardDraw from '@/components/home/components/components/draw/standardDraw'
+import freeDraw from '@/components/home/components/components/draw/freeDraw.vue'
+import standardDraw from '@/components/home/components/components/draw/standardDraw.vue'
 import coordinateDraw from '@/components/home/components/components/draw/coordinateDraw'
 import clickCheck from '@/components/home/components/components/check/clickCheck'
 import valueCheck from '@/components/home/components/components/check/valueCheck'
@@ -10,6 +10,7 @@ import defaultControl from '@/components/home/components/components/defaultContr
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',

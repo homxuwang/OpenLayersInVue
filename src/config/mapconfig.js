@@ -47,7 +47,7 @@ var view = {
 /**
  * 左边栏上半部分 地图图层信息
  * name 图层名称
- * url 获取图层的链接
+ * url 获取图层的链接(static文件的目录要用绝对路径)
  */
 var vectorLayers = [
     {
@@ -57,19 +57,19 @@ var vectorLayers = [
         {
             "id": "water",
             "label": '武汉市区划',
-            "url": '@/../static/data/whPolygon_geojson.json',
+            "url": '/static/data/whPolygon_geojson.json',
             "vectorLayer": null
         },
         {
             "id": "road",
             "label": '武汉市路网',
-            "url": '@/../static/data/whRoads_geojson.json',
+            "url": '/static/data/whRoads_geojson.json',
             "vectorLayer": null
         },
         {
             "id": "point",
             "label": '武汉市兴趣点',
-            "url": '@/../static/data/whPoint_geojson.json',
+            "url": '/static/data/whPoint_geojson.json',
             "vectorLayer": null
         }        
         ]

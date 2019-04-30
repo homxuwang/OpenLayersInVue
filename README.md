@@ -8,7 +8,7 @@
 vuex vue-router eventBus
 # 在线测试
 
-地址:https://homxuwang.github.io/OpenLayersInVue/dist
+地址:https://homxuwang.github.io/OpenLayersInVue/
 用户名: admin
 密码: 123
 
