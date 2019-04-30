@@ -10,6 +10,7 @@ import defaultControl from '@/components/home/components/components/defaultContr
 Vue.use(Router)
 
 export default new Router({
+  // mode: 'history',      //如果使用history模式,会直接使用 主机名:端口名/路由 的模式,在gitpage上无法使用
   routes: [
     {
       path: '/',

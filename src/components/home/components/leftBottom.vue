@@ -34,9 +34,9 @@
    methods: {
      toRouter(data) {
         this.$bus.$emit('changeTab',1)
-        // if(data.id == "addByStandardDraw" || data.id == "addByFreeDraw"){
-        //   this.$bus.$emit('endDraw')
-        // }
+        if(data.id == "addByStandardDraw" || data.id == "addByFreeDraw"){
+          this.$bus.$emit('endDraw')
+        }
         this.$router.push({path:'/home/'+data.path})
      }
    }
