@@ -50,11 +50,15 @@ vuex vue-router eventBus
 │  │  │  │   │  ├── defaultControl
 │  │  │  │   │  │  ├── defaultControl.vue
 │  │  │  │   │  │  └── defaultControlCode.js
-│  │  │  │   │  └── draw  
-│  │  │  │   │     ├── coordinateDraw.vue
-│  │  │  │   │     ├── freeDraw.vue  
-│  │  │  │   │     ├── initializationDrawElements.js
-│  │  │  │   │     └── standardDraw.vue
+│  │  │  │   │  ├── draw  
+│  │  │  │   │  │  ├── coordinateDraw.vue
+│  │  │  │   │  │  ├── freeDraw.vue  
+│  │  │  │   │  │  ├── initializationDrawElements.js
+│  │  │  │   │  │  └── standardDraw.vue
+│  │  │  │   │  └── edit  
+│  │  │  │   │     ├── editGeometry.vue
+│  │  │  │   │     ├── editProperties.vue
+│  │  │  │   │     └── index.js
 │  │  │  │   ├── leftBottom.vue
 │  │  │  │   └── leftTop.vue
 │  │  │  └── home.vue
@@ -130,7 +134,10 @@ vuex vue-router eventBus
       - [x] 线       2019/04/29
       - [x] 多边形   2019/04/29
       - [x] 圆       2019/04/29
-
+- [x] 编辑功能
+   - [x] 图形编辑    2019/06/15
+   
+      
  todo:切换底图时绘制的图形会消失
 
 ## Build Setup

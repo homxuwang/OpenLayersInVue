@@ -27,7 +27,9 @@ export default {
       toBeAddedFeature: null, //要添加的绘图要素
       VectorSource: null, //LayerSource存放点要素
       LayerVector: null,   //LayerVector存放source
-      interactiondraw: null  //绘图控件
+      interactiondraw: null,  //绘图控件
+      featureSelection: null,   //交互选择控件
+      featureModification: null //交互编辑控件
     }
   },
   created(){
@@ -64,6 +66,7 @@ export default {
     }),
     // 绘图
     this.$bus.on('interactionDrawEvent',(data) => {
+     
       if(_this.interactiondraw != null){
         _this.map.removeInteraction(_this.interactiondraw)
       }
@@ -88,6 +91,23 @@ export default {
       if(_this.interactiondraw){
         _this.map.removeInteraction(_this.interactiondraw)
       }      
+    }),
+    //交互选择控件
+    this.$bus.on('featureSelection',(selection) => {
+      //添加选择控件
+      if( !_this.featureSelection){
+        _this.featureSelection = selection;
+        _this.map.addInteraction(_this.featureSelection);
+      }
+      this.$bus.$emit('selectSource',_this.VectorSource);
+    }),    
+    //交互编辑控件
+    this.$bus.on('featureModification',(modification) => {      
+      //添加交互编辑控件
+      if(!_this.featureModification){
+        _this.featureModification = modification;
+        _this.map.addInteraction(_this.featureModification);
+      }
     })
   },
   //页面渲染完成后
@@ -181,7 +201,23 @@ export default {
          this.map.removeControl(stateZoomToExtent);
          this.$store.commit('destoryDefaultControl','ZoomToExtent')
        }
-     }     
+     },
+     //监听路由变化,根据路由变化增删相应组件
+     $route(to) {
+       let patharr = to.path.split('/')
+       let lastpath = patharr[patharr.length - 1];
+       //如果是进行画图,则移除交互选择/交互编辑组件
+       if(lastpath.indexOf('Draw') > -1){
+         console.log(this.featureSelection)
+         this.map.removeInteraction(this.featureSelection);
+         this.map.removeInteraction(this.featureModification);
+         this.featureModification = null;
+         this.featureSelection = null;
+       }
+       if(lastpath.indexOf('edit') > -1){
+         this.map.removeInteraction(this.interactiondraw);
+       }
+     }  
   },
   methods: {
     _initMap() {

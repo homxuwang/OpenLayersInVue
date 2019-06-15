@@ -5,6 +5,8 @@ import standardDraw from '@/components/home/components/components/draw/standardD
 import coordinateDraw from '@/components/home/components/components/draw/coordinateDraw'
 import clickCheck from '@/components/home/components/components/check/clickCheck'
 import valueCheck from '@/components/home/components/components/check/valueCheck'
+import editGeometry from '@/components/home/components/components/edit/editGeometry'
+import editProperties from '@/components/home/components/components/edit/editProperties'
 
 import defaultControl from '@/components/home/components/components/defaultControl/defaultControl'
 Vue.use(Router)
@@ -48,6 +50,14 @@ export default new Router({
         {
           path: 'defaultControl',
           component: defaultControl
+        },
+        {
+          path: 'editGeometry',
+          component: editGeometry
+        },
+        {
+          path: 'editProperties',
+          component: editProperties
         }
       ],
       component: resolve => require(['@/components/home/home'], resolve)
