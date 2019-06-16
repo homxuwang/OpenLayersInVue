@@ -28,6 +28,23 @@
       ]
     },
     {
+      "id": "edit",
+      "label": "编辑功能",
+      "path": "editGeometry",
+      "children": [
+        {
+          "id": "editGeometry",
+          "label": "编辑图形",
+          "path": "editGeometry"
+        },
+        {
+          "id": "editProperties",
+          "label": "编辑属性",
+          "path": "editProperties"
+        }
+      ]
+    },
+    {
       "id": "search",
       "label": "查询功能",
       "path": "clickCheck",
