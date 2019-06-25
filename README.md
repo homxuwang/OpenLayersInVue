@@ -44,6 +44,9 @@ vuex vue-router eventBus
 │  │  ├── home                   主页组件目录
 │  │  │  ├── components
 │  │  │  │   ├── components
+│  │  │  │   │  ├── analysis
+│  │  │  │   │  │  ├── createBuffer.vue
+│  │  │  │   │  │  └── index.js
 │  │  │  │   │  ├── check
 │  │  │  │   │  │  ├── clickCheck.vue
 │  │  │  │   │  │  └── valueCheck.vue
@@ -82,7 +85,7 @@ vuex vue-router eventBus
 │  │  │  ├── bg.png
 │  │  │  └── ....
 │  ├── config                   地图配置目录
-│  │  └── mapconfig.js          地图配置文件
+│  │  └── mapconfig.js          地图配置文件、服务器配置文件
 │  ├── routes                   前端路由
 │  │  └── index.js
 │  └── store                    vuex
@@ -98,8 +101,12 @@ vuex vue-router eventBus
 │  │  │  └── whRoads_geojson.json      武汉矢量路网数据文件  
 │  │  ├── json                  json配置文件
 │  │  │  └── options.json       地图操作选项配置
-│  │  └── config.js             用户、服务器配置文件
+│  │  └── config.js            
 ```
+
+空间分析功能要使用对应后台服务,见 https://github.com/homxuwang/geoanalysis
+
+在`src\config\mapconfig.js`中配置后台服务路径地址
 
 # todoList
 - [x] 矢量图层控制      2019/04/27(加载本地矢量geojson文件,因为没有矢量切片所以加载会很慢,且比较耗费内存资源.暂时使用同步加载,没有采用异步加载的方式.todo: 异步加载数据)
@@ -137,7 +144,10 @@ vuex vue-router eventBus
 - [x] 编辑功能
    - [x] 图形编辑    2019/06/15
    
-      
+- [x] 空间分析功能  
+   - [x] 生成缓冲区  2019/06/25
+
+
  todo:切换底图时绘制的图形会消失
 
 ## Build Setup

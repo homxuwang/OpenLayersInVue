@@ -7,6 +7,7 @@ import clickCheck from '@/components/home/components/components/check/clickCheck
 import valueCheck from '@/components/home/components/components/check/valueCheck'
 import editGeometry from '@/components/home/components/components/edit/editGeometry'
 import editProperties from '@/components/home/components/components/edit/editProperties'
+import createBuffer from '@/components/home/components/components/analysis/createBuffer'
 
 import defaultControl from '@/components/home/components/components/defaultControl/defaultControl'
 Vue.use(Router)
@@ -58,6 +59,10 @@ export default new Router({
         {
           path: 'editProperties',
           component: editProperties
+        },
+        {
+          path: 'createBuffer',
+          component: createBuffer
         }
       ],
       component: resolve => require(['@/components/home/home'], resolve)

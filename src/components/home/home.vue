@@ -85,7 +85,7 @@ import VMap from '@/components/map/map-component'
     bottom: 10px;
     .left-content-top{
       width: 100%;
-      height: 35%;
+      height: 45%;
       background-color: #ffffff;
       background-size: 100% 100%;
       background-position: top left;
@@ -99,7 +99,7 @@ import VMap from '@/components/map/map-component'
     .left-content-bottom{
       border-top: 2px solid black;
       width: 100%;
-      height: 65%;
+      height: 55%;
       background-color: #ffffff;
       background-size: 100% 100%;
       background-position: top left;

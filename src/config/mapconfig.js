@@ -97,10 +97,14 @@ var leftTopBaseLayers = [
  */
 var ZoomToExtent_Extent = [120.05144842, 30.95285152, 120.25160558, 36.04366038]
 
+// 后台空间分析接口地址
+const localSrc = 'http://localhost:8088/geoanalysis/'
+
 export default {
     view,
     vectorLayers,
     streetmap,
     leftTopBaseLayers,
-    ZoomToExtent_Extent
+    ZoomToExtent_Extent,
+    localSrc
 } 
