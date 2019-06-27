@@ -59,6 +59,18 @@
           "path": "valueCheck"
         }
       ]
+    },
+    {
+      "id": "analysis",
+      "label": "空间分析",
+      "path": "createBuffer",
+      "children": [
+        {
+          "id": "createBuffer",
+          "label": "生成缓冲区",
+          "path": "createBuffer"
+        }
+      ]
     }
   ]
 }
